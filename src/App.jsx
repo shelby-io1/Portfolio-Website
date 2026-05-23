@@ -1062,7 +1062,7 @@ function ContactSection() {
             gap: "1.5rem",
           }}>
             {/* Name + copyright */}
-            <div>
+            <div className="w-full sm:w-auto text-center sm:text-left">
               <p
                 className="font-black uppercase"
                 style={{ color: "#D7E2EA", fontSize: "clamp(1rem, 2vw, 1.4rem)", letterSpacing: "0.08em" }}
@@ -1084,7 +1084,7 @@ function ContactSection() {
             </div>
 
             {/* Social links */}
-            <div style={{ display: "flex", gap: "0.75rem" }}>
+            <div className="w-full sm:w-auto flex justify-center" style={{ display: "flex", gap: "0.75rem" }}>
               {/* Instagram */}
               <a
                 href="https://www.instagram.com/shahi.khan.io1?utm_source=qr"
