@@ -622,17 +622,15 @@ function ServicesSection() {
     <section
       id="price"
       style={{
-        background: "#FFFFFF",
-        borderRadius: "40px",
-        margin: "0 clamp(0.5rem, 2vw, 2rem) clamp(4rem, 6vw, 8rem)",
-        boxShadow: "0 0 0 1px rgba(182,0,168,0.15), 0 0 30px rgba(182,0,168,0.12), 0 0 60px rgba(118,33,176,0.08), 0 0 100px rgba(190,76,0,0.04)",
+        background: "transparent",
+        borderRadius: "40px 40px 0 0",
       }}
-      className="sm:rounded-[50px] md:rounded-[60px] px-6 sm:px-10 md:px-16 pt-20 sm:pt-24 md:pt-32 pb-32 sm:pb-36 md:pb-44"
+      className="px-6 sm:px-10 md:px-16 pt-20 sm:pt-24 md:pt-32 pb-32 sm:pb-36 md:pb-44"
     >
       <FadeIn delay={0} y={40}>
         <h2
-          className="font-black uppercase text-center"
-          style={{ color: "#0C0C0C", fontSize: "clamp(3rem, 12vw, 160px)", marginBottom: "clamp(3rem, 6vw, 7rem)" }}
+          className="hero-heading font-black uppercase text-center leading-none tracking-tight"
+          style={{ fontSize: "clamp(3rem, 12vw, 160px)", marginBottom: "clamp(3rem, 6vw, 7rem)" }}
         >
           Services
         </h2>
@@ -643,8 +641,8 @@ function ServicesSection() {
           <FadeIn key={svc.num} delay={i * 0.1} y={20}>
             <div
               style={{
-                borderTop: i === 0 ? "1px solid rgba(12,12,12,0.15)" : "none",
-                borderBottom: "1px solid rgba(12,12,12,0.15)",
+                borderTop: i === 0 ? "1px solid rgba(215,226,234,0.1)" : "none",
+                borderBottom: "1px solid rgba(215,226,234,0.1)",
                 display: "flex",
                 alignItems: "center",
                 gap: "clamp(1rem, 3vw, 3rem)",
@@ -654,9 +652,9 @@ function ServicesSection() {
               <span
                 className="font-black"
                 style={{
-                  fontSize: "clamp(3rem, 10vw, 140px)", color: "#0C0C0C",
+                  fontSize: "clamp(3rem, 10vw, 140px)", color: "#D7E2EA",
                   lineHeight: 1, display: "flex", alignItems: "center",
-                  alignSelf: "stretch", flexShrink: 0,
+                  alignSelf: "stretch", flexShrink: 0, opacity: 0.12,
                 }}
               >
                 {svc.num}
@@ -664,13 +662,13 @@ function ServicesSection() {
               <div>
                 <p
                   className="font-medium uppercase"
-                  style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)", color: "#0C0C0C", marginBottom: "0.4em" }}
+                  style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)", color: "#D7E2EA", marginBottom: "0.4em" }}
                 >
                   {svc.name}
                 </p>
                 <p
                   className="font-light leading-relaxed max-w-2xl"
-                  style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.25rem)", color: "#0C0C0C", opacity: 0.6 }}
+                  style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.25rem)", color: "#D7E2EA", opacity: 0.5 }}
                 >
                   {svc.desc}
                 </p>
