@@ -625,7 +625,7 @@ function ServicesSection() {
         background: "transparent",
         borderRadius: "40px 40px 0 0",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-20 sm:pt-24 md:pt-32 pb-32 sm:pb-36 md:pb-44"
+      className="px-6 sm:px-10 md:px-16 pt-20 sm:pt-24 md:pt-32 pb-48 sm:pb-56 md:pb-64"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -730,35 +730,29 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
     offset: ["start start", "end end"],
   });
 
-  const targetScale = 1 - (totalCards - 1 - index) * 0.03;
   const scale = useTransform(
     scrollYProgress,
-    [index / totalCards, 1],
-    [1, targetScale]
+    [0, index / totalCards, (index + 1) / totalCards, 1],
+    [0.85, 0.85, 1, 1]
   );
 
-  const cardProgress = useTransform(
+  const cardY = useTransform(
     scrollYProgress,
-    [Math.max(0, (index - 0.5) / totalCards), index / totalCards],
-    [60, 0]
+    [0, index / totalCards, (index + 1) / totalCards, 1],
+    [80, 80, 0, 0]
   );
 
-const topVal = typeof window !== "undefined" && window.innerWidth < 640 ? 64 + index * 12 : 96 + index * 28;
-    return (
-    <div style={{ minHeight: "clamp(500px, 85vh, 700px)", display: "flex", alignItems: "flex-start", paddingTop: `${index * 20}px` }}>
+  return (
+    <div style={{ minHeight: "clamp(500px, 85vh, 700px)", display: "flex", alignItems: "flex-start" }}>
       <motion.div
         ref={cardRef}
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.75, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-        onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
         style={{
           scale,
-          y: cardProgress,
+          y: cardY,
           position: "sticky",
-          top: `${topVal}px`,
+          top: "clamp(64px, 10vw, 96px)",
           width: "100%",
+          zIndex: index,
           background: "#0C0C0C",
           border: `2px solid ${project.accent}44`,
           borderRadius: "clamp(24px, 5vw, 60px)",
@@ -768,6 +762,7 @@ const topVal = typeof window !== "undefined" && window.innerWidth < 640 ? 64 + i
           cursor: "pointer",
         }}
         className="p-5 sm:p-7 md:p-10"
+        onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
       >
         <div style={{
           position: "absolute", top: 0, left: 0, width: "40%", height: "50%",
