@@ -14,6 +14,8 @@ const GlobalStyles = () => (
       background: #0C0C0C;
       font-family: 'Kanit', sans-serif;
       scroll-behavior: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .hero-heading {
@@ -41,6 +43,13 @@ const GlobalStyles = () => (
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #0C0C0C; }
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+    @supports (height: 100dvh) {
+      .hero-height { height: 100dvh; }
+    }
+    @supports not (height: 100dvh) {
+      .hero-height { height: 100vh; }
+    }
 
   `}</style>
 );
@@ -252,7 +261,7 @@ function HeroSection() {
   return (
     <section
       style={{ background: "#0C0C0C", overflowX: "clip", position: "relative" }}
-      className="h-screen flex flex-col"
+      className="hero-height flex flex-col"
     >
       <ShootingStars />
       {/* Navbar */}
@@ -293,7 +302,7 @@ function HeroSection() {
                   transition: "all 0.25s ease",
                   cursor: "pointer",
                   fontSize: "clamp(0.55rem, 0.75vw, 0.75rem)",
-                  padding: "0.4rem 0.7rem",
+                  padding: "clamp(0.5rem, 1vw, 0.7rem) clamp(0.8rem, 1.5vw, 1rem)",
                   borderRadius: "9999px",
                 }}
                 onMouseEnter={e => { e.currentTarget.style.color = "#D7E2EA"; e.currentTarget.style.background = "rgba(182,0,168,0.12)"; }}
@@ -447,20 +456,20 @@ function MarqueeSection() {
       >
         {row1Cards.map((card, i) => (
           <div key={i} style={{
-            width: "280px", height: "180px", borderRadius: "20px", flexShrink: 0,
+            width: "clamp(200px, 40vw, 280px)", height: "clamp(140px, 22vw, 180px)", borderRadius: "20px", flexShrink: 0,
             background: `linear-gradient(145deg, ${card.accent}15 0%, ${card.accent}05 100%)`,
             border: `1px solid ${card.accent}22`,
-            padding: "1.5rem",
+            padding: "clamp(1rem, 2.5vw, 1.5rem)",
             display: "flex", flexDirection: "column", justifyContent: "center",
             position: "relative", overflow: "hidden",
           }}>
-            <span style={{ fontSize: "2rem", color: card.accent, opacity: 0.3, position: "absolute", top: "0.75rem", right: "1rem" }}>
+            <span style={{ fontSize: "clamp(1.4rem, 4vw, 2rem)", color: card.accent, opacity: 0.3, position: "absolute", top: "0.75rem", right: "1rem" }}>
               {card.icon}
             </span>
-            <p style={{ color: "#D7E2EA", fontWeight: 700, fontSize: "1.05rem", letterSpacing: "0.03em", marginBottom: "0.4rem", position: "relative", zIndex: 1 }}>
+            <p style={{ color: "#D7E2EA", fontWeight: 700, fontSize: "clamp(0.85rem, 2vw, 1.05rem)", letterSpacing: "0.03em", marginBottom: "0.4rem", position: "relative", zIndex: 1 }}>
               {card.label}
             </p>
-            <p style={{ color: "rgba(215,226,234,0.5)", fontWeight: 300, fontSize: "0.8rem", lineHeight: 1.4, position: "relative", zIndex: 1 }}>
+            <p style={{ color: "rgba(215,226,234,0.5)", fontWeight: 300, fontSize: "clamp(0.65rem, 1.4vw, 0.8rem)", lineHeight: 1.4, position: "relative", zIndex: 1 }}>
               {card.desc}
             </p>
           </div>
@@ -479,20 +488,20 @@ function MarqueeSection() {
       >
         {row2Cards.map((card, i) => (
           <div key={i} style={{
-            width: "260px", height: "160px", borderRadius: "20px", flexShrink: 0,
+            width: "clamp(180px, 36vw, 260px)", height: "clamp(120px, 20vw, 160px)", borderRadius: "20px", flexShrink: 0,
             background: `linear-gradient(145deg, ${card.accent}12 0%, rgba(255,255,255,0.02) 100%)`,
             border: `1px solid ${card.accent}18`,
-            padding: "1.25rem",
+            padding: "clamp(0.75rem, 2vw, 1.25rem)",
             display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",
             textAlign: "center",
           }}>
-            <span style={{ fontSize: "2.2rem", fontWeight: 900, color: card.accent, lineHeight: 1, marginBottom: "0.3rem" }}>
+            <span style={{ fontSize: "clamp(1.6rem, 5vw, 2.2rem)", fontWeight: 900, color: card.accent, lineHeight: 1, marginBottom: "0.3rem" }}>
               {card.stat}
             </span>
-            <p style={{ color: "#D7E2EA", fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.06em", marginBottom: "0.2rem" }}>
+            <p style={{ color: "#D7E2EA", fontWeight: 600, fontSize: "clamp(0.7rem, 1.8vw, 0.85rem)", letterSpacing: "0.06em", marginBottom: "0.2rem" }}>
               {card.label}
             </p>
-            <p style={{ color: "rgba(215,226,234,0.4)", fontWeight: 300, fontSize: "0.7rem" }}>
+            <p style={{ color: "rgba(215,226,234,0.4)", fontWeight: 300, fontSize: "clamp(0.55rem, 1.3vw, 0.7rem)" }}>
               {card.desc}
             </p>
           </div>
@@ -514,7 +523,7 @@ function AboutSection() {
     >
       {/* Decorative corner images */}
       {/* Top-left moon */}
-      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%]">
+      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="hidden sm:block absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png"
           alt=""
@@ -523,7 +532,7 @@ function AboutSection() {
       </FadeIn>
 
       {/* Bottom-left 3D object */}
-      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%]">
+      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png"
           alt=""
@@ -532,7 +541,7 @@ function AboutSection() {
       </FadeIn>
 
       {/* Top-right lego */}
-      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%]">
+      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="hidden sm:block absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
           alt=""
@@ -541,7 +550,7 @@ function AboutSection() {
       </FadeIn>
 
       {/* Bottom-right group */}
-      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%]">
+      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png"
           alt=""
@@ -736,8 +745,9 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
     [60, 0]
   );
 
-  return (
-    <div style={{ height: "85vh", display: "flex", alignItems: "flex-start", paddingTop: `${index * 28}px` }}>
+const topVal = typeof window !== "undefined" && window.innerWidth < 640 ? 64 + index * 12 : 96 + index * 28;
+    return (
+    <div style={{ minHeight: "clamp(500px, 85vh, 700px)", display: "flex", alignItems: "flex-start", paddingTop: `${index * 20}px` }}>
       <motion.div
         ref={cardRef}
         initial={{ opacity: 0, y: 80 }}
@@ -749,7 +759,7 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           scale,
           y: cardProgress,
           position: "sticky",
-          top: `${96 + index * 28}px`,
+          top: `${topVal}px`,
           width: "100%",
           background: "#0C0C0C",
           border: `2px solid ${project.accent}44`,
@@ -1091,8 +1101,8 @@ function ContactSection() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "48px",
-                  height: "48px",
+                  width: "clamp(38px, 8vw, 48px)",
+                  height: "clamp(38px, 8vw, 48px)",
                   borderRadius: "9999px",
                   border: "1px solid rgba(215,226,234,0.2)",
                   background: "rgba(215,226,234,0.04)",
@@ -1102,7 +1112,7 @@ function ContactSection() {
                 onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(182,0,168,0.6)"; e.currentTarget.style.background = "rgba(182,0,168,0.12)"; e.currentTarget.style.transform = "scale(1.1)"; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(215,226,234,0.2)"; e.currentTarget.style.background = "rgba(215,226,234,0.04)"; e.currentTarget.style.transform = "scale(1)"; }}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="clamp(16, 4vw, 20)" height="clamp(16, 4vw, 20)" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                   <circle cx="12" cy="12" r="4"/>
                   <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
@@ -1118,8 +1128,8 @@ function ContactSection() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "48px",
-                  height: "48px",
+                  width: "clamp(38px, 8vw, 48px)",
+                  height: "clamp(38px, 8vw, 48px)",
                   borderRadius: "9999px",
                   border: "1px solid rgba(215,226,234,0.2)",
                   background: "rgba(215,226,234,0.04)",
