@@ -441,7 +441,7 @@ function MarqueeSection() {
     <section
       ref={sectionRef}
       style={{ background: "#0C0C0C", overflowX: "hidden" }}
-      className="pt-24 sm:pt-32 md:pt-40 pb-20 sm:pb-24 md:pb-28"
+      className="pt-14 sm:pt-20 md:pt-32 pb-14 sm:pb-20 md:pb-28"
     >
       {/* Row 1 — moves right */}
       <div
@@ -519,7 +519,7 @@ function AboutSection() {
     <section
       id="about"
       style={{ background: "#0C0C0C", position: "relative" }}
-      className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-10 md:px-16 py-28 sm:py-32 md:py-40"
+      className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-10 md:px-16 py-20 sm:py-28 md:py-40"
     >
       {/* Decorative corner images */}
       {/* Top-left moon */}
@@ -625,7 +625,7 @@ function ServicesSection() {
         background: "transparent",
         borderRadius: "40px 40px 0 0",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-20 sm:pt-24 md:pt-32 pb-48 sm:pb-56 md:pb-64"
+      className="px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 pb-28 sm:pb-40 md:pb-64"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -901,7 +901,7 @@ function ProjectsSection() {
         position: "relative",
         marginBottom: "clamp(4rem, 6vw, 8rem)",
       }}
-      className="sm:rounded-t-[50px] md:rounded-t-[60px] px-6 sm:px-10 md:px-16 pt-20 sm:pt-24 md:pt-32 pb-32 sm:pb-40 md:pb-48"
+      className="sm:rounded-t-[50px] md:rounded-t-[60px] px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 pb-24 sm:pb-32 md:pb-48"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -936,7 +936,7 @@ function ContactSection() {
     <section
       id="contact"
       style={{ background: "#0C0C0C", position: "relative", overflow: "hidden" }}
-      className="px-6 sm:px-10 md:px-16 pt-24 sm:pt-32 md:pt-40 pb-24 sm:pb-28 md:pb-36"
+      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-24 md:pt-40 pb-16 sm:pb-24 md:pb-36"
     >
       {/* Subtle glow blob */}
       <div style={{
