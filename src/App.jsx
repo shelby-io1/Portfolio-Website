@@ -115,7 +115,7 @@ function Magnet({ children, padding = 150, strength = 3 }) {
 /* ─────────────────────────────────────────────────────────────
    REUSABLE: AnimatedText (character scroll-reveal)
 ───────────────────────────────────────────────────────────── */
-function AnimatedText({ text, className = "" }) {
+function AnimatedText({ text, className = "", style: customStyle = {} }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -129,7 +129,7 @@ function AnimatedText({ text, className = "" }) {
   let globalIndex = 0;
 
   return (
-    <p ref={ref} className={className} style={{ position: "relative", wordBreak: "keep-all", overflowWrap: "break-word" }}>
+    <p ref={ref} className={className} style={{ position: "relative", wordBreak: "break-word", ...customStyle }}>
       {flatChars.map((word, wi) => {
         const wordChars = word.chars.map((char) => {
           const i = globalIndex++;
