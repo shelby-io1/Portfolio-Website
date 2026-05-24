@@ -1157,6 +1157,9 @@ export default function App() {
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
+      <div className="h-16 sm:h-20 md:h-32 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
+        <div style={{ width: "clamp(60px, 20vw, 120px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.4), rgba(118,33,176,0.4), transparent)" }} />
+      </div>
       <ProjectsSection />
       <ContactSection />
     </div>
