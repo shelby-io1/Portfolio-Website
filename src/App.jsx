@@ -753,6 +753,7 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           top: 0,
           maxWidth: "calc(100vw - 2rem)",
           margin: "0 auto",
+          minHeight: "clamp(480px, 70vh, 640px)",
           zIndex: index,
           background: "#0C0C0C",
           border: `2px solid ${project.accent}44`,
