@@ -44,13 +44,6 @@ const GlobalStyles = () => (
     ::-webkit-scrollbar-track { background: #0C0C0C; }
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
-    @supports (min-height: 100dvh) {
-      .hero-min { min-height: 100dvh; }
-    }
-    @supports not (min-height: 100dvh) {
-      .hero-min { min-height: 100vh; }
-    }
-
   `}</style>
 );
 
@@ -261,7 +254,7 @@ function HeroSection() {
   return (
     <section
       style={{ background: "#0C0C0C", overflowX: "clip", position: "relative" }}
-      className="hero-min flex flex-col"
+      className="min-h-screen md:min-h-[100dvh] flex flex-col pt-32 pb-8 sm:pb-12 md:pt-48 md:pb-10"
     >
       <ShootingStars />
       {/* Navbar */}
@@ -316,7 +309,7 @@ function HeroSection() {
       </FadeIn>
 
       {/* Hero Heading — upper left */}
-      <div style={{ overflow: "hidden", paddingTop: "clamp(6rem, 10vh, 8rem)" }} className="flex flex-col">
+      <div className="flex flex-col">
         <div style={{ overflow: "hidden", alignSelf: "flex-start", paddingLeft: "clamp(1rem, 5vw, 6rem)" }}>
           <motion.p
             initial={{ y: 60, opacity: 0 }}
@@ -363,7 +356,7 @@ function HeroSection() {
       </div>
 
       {/* Bottom bar */}
-      <div className="mt-auto flex justify-end px-6 md:px-10 pb-5 sm:pb-6 md:pb-10">
+      <div className="md:mt-auto flex justify-end px-6 md:px-10 pb-5 sm:pb-6 md:pb-10">
         <FadeIn delay={0.5} y={20}>
           <div style={{
             display: "flex", alignItems: "center", gap: "0.75rem",
