@@ -44,11 +44,11 @@ const GlobalStyles = () => (
     ::-webkit-scrollbar-track { background: #0C0C0C; }
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
-    @supports (height: 100dvh) {
-      .hero-height { height: 100dvh; }
+    @supports (min-height: 100dvh) {
+      .hero-min { min-height: 100dvh; }
     }
-    @supports not (height: 100dvh) {
-      .hero-height { height: 100vh; }
+    @supports not (min-height: 100dvh) {
+      .hero-min { min-height: 100vh; }
     }
 
   `}</style>
@@ -261,7 +261,7 @@ function HeroSection() {
   return (
     <section
       style={{ background: "#0C0C0C", overflowX: "clip", position: "relative" }}
-      className="hero-height flex flex-col"
+      className="hero-min flex flex-col"
     >
       <ShootingStars />
       {/* Navbar */}
@@ -316,7 +316,7 @@ function HeroSection() {
       </FadeIn>
 
       {/* Hero Heading — upper left */}
-      <div style={{ overflow: "hidden", paddingTop: "clamp(6rem, 10vh, 8rem)" }} className="mt-4 sm:mt-6 md:mt-8 flex-1 flex flex-col">
+      <div style={{ overflow: "hidden", paddingTop: "clamp(6rem, 10vh, 8rem)" }} className="flex flex-col">
         <div style={{ overflow: "hidden", alignSelf: "flex-start", paddingLeft: "clamp(1rem, 5vw, 6rem)" }}>
           <motion.p
             initial={{ y: 60, opacity: 0 }}
@@ -363,10 +363,7 @@ function HeroSection() {
       </div>
 
       {/* Bottom bar */}
-      <div
-        style={{ marginTop: "auto" }}
-        className="flex justify-end px-6 md:px-10 pb-7 sm:pb-8 md:pb-10"
-      >
+      <div className="mt-auto flex justify-end px-6 md:px-10 pb-5 sm:pb-6 md:pb-10">
         <FadeIn delay={0.5} y={20}>
           <div style={{
             display: "flex", alignItems: "center", gap: "0.75rem",
@@ -441,7 +438,7 @@ function MarqueeSection() {
     <section
       ref={sectionRef}
       style={{ background: "#0C0C0C", overflowX: "hidden" }}
-      className="pt-14 sm:pt-20 md:pt-32 pb-14 sm:pb-20 md:pb-28"
+      className="pt-8 sm:pt-16 md:pt-28 pb-14 sm:pb-20 md:pb-28"
     >
       {/* Row 1 — moves right */}
       <div
@@ -804,13 +801,14 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
         </div>
 
         {/* Body: color block + description */}
-        <div style={{ display: "flex", gap: "clamp(0.75rem, 1.5vw, 1.5rem)", position: "relative", zIndex: 1, alignItems: "stretch", flex: 1, minHeight: "clamp(200px, 28vw, 380px)" }}>
+        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-6" style={{ position: "relative", zIndex: 1, alignItems: "stretch", flex: 1, minHeight: "clamp(280px, 28vw, 380px)" }}>
           {/* Left — color identity block */}
-          <div style={{
-            width: "45%", borderRadius: "clamp(16px, 2.5vw, 32px)",
+          <div className="w-full md:w-[45%]" style={{
+            borderRadius: "clamp(16px, 2.5vw, 32px)",
             background: `linear-gradient(145deg, ${project.accent} 0%, ${project.accent}cc 100%)`,
             position: "relative", overflow: "hidden",
             display: "flex", alignItems: "center", justifyContent: "center",
+            minHeight: "clamp(160px, 20vw, 280px)",
           }}>
             <span style={{
               position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
@@ -843,8 +841,8 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           </div>
 
           {/* Right — description card */}
-          <div style={{
-            width: "55%", borderRadius: "clamp(16px, 2.5vw, 32px)",
+          <div className="w-full md:w-[55%]" style={{
+            borderRadius: "clamp(16px, 2.5vw, 32px)",
             background: `linear-gradient(145deg, ${project.accent}08 0%, rgba(255,255,255,0.015) 100%)`,
             border: `1px solid ${project.accent}15`,
             padding: "clamp(1.25rem, 2vw, 2.5rem)",
@@ -894,14 +892,13 @@ function ProjectsSection() {
     <section
       id="projects"
       ref={containerRef}
+      className="sm:rounded-t-[50px] md:rounded-t-[60px] border-t border-[rgba(182,0,168,0.08)] px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 mt-16 sm:mt-24 md:mt-32 pb-24 sm:pb-32 md:pb-48"
       style={{
         background: "#0C0C0C",
-        borderRadius: "40px 40px 0 0",
         zIndex: 10,
         position: "relative",
         marginBottom: "clamp(4rem, 6vw, 8rem)",
       }}
-      className="sm:rounded-t-[50px] md:rounded-t-[60px] px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 pb-24 sm:pb-32 md:pb-48"
     >
       <FadeIn delay={0} y={40}>
         <h2
