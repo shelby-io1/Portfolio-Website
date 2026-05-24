@@ -26,7 +26,7 @@ const GlobalStyles = () => (
       -webkit-text-fill-color: transparent;
     }
 
-    :root { scroll-padding-top: 80px; }
+    :root { scroll-padding-top: 120px; }
 
     @keyframes shoot {
       0% { transform: translateX(0) translateY(0) scale(1); opacity: 0; }
@@ -519,7 +519,7 @@ function AboutSection() {
   return (
     <section
       id="about"
-      style={{ background: "#0C0C0C", position: "relative" }}
+      style={{ background: "#0C0C0C", position: "relative", scrollMarginTop: "100px" }}
       className="flex flex-col items-center px-6 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
     >
       {/* Decorative corner images */}
@@ -625,6 +625,7 @@ function ServicesSection() {
       style={{
         background: "transparent",
         borderRadius: "40px 40px 0 0",
+        scrollMarginTop: "100px",
       }}
       className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20"
     >
@@ -768,7 +769,7 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           width: "100%",
           margin: "0 auto",
           maxWidth: "calc(100% - 1rem)",
-          minHeight: "clamp(380px, 55vh, 600px)",
+          minHeight: "clamp(300px, 40vh, 480px)",
           zIndex: index,
           background: "#0C0C0C",
           border: `2px solid ${project.accent}44`,
@@ -821,7 +822,7 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
         </div>
 
         {/* Body: color block + description */}
-        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-6" style={{ position: "relative", zIndex: 1, alignItems: "stretch", flex: 1, minHeight: "clamp(280px, 28vw, 380px)" }}>
+        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-6" style={{ position: "relative", zIndex: 1, alignItems: "stretch", flex: 1, minHeight: "clamp(200px, 22vw, 300px)" }}>
           {/* Left — color identity block */}
           <div className="w-full md:w-[45%]" style={{
             borderRadius: "clamp(16px, 2.5vw, 32px)",
