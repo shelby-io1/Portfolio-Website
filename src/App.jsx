@@ -758,7 +758,7 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           width: "100%",
           margin: "0 auto",
           maxWidth: "calc(100% - 1rem)",
-          minHeight: "clamp(320px, 50vh, 480px)",
+          minHeight: "clamp(480px, 70vh, 640px)",
           zIndex: index,
           background: "#0C0C0C",
           border: `2px solid ${project.accent}44`,
@@ -810,36 +810,84 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           </div>
         </div>
 
-        {/* Body: simple content */}
-        <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "clamp(0.5rem, 1vw, 1rem) 0" }}>
-          <p style={{
-            color: "#D7E2EA", fontWeight: 300, lineHeight: 1.7,
-            fontSize: "clamp(0.85rem, 1.3vw, 1.1rem)", opacity: 0.85,
-            marginBottom: "clamp(1rem, 1.5vw, 1.5rem)",
+        {/* Body: color block + description */}
+        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-6" style={{ position: "relative", zIndex: 1, alignItems: "stretch", flex: 1, minHeight: "clamp(280px, 28vw, 380px)" }}>
+          {/* Left — color identity block */}
+          <div className="w-full md:w-[45%]" style={{
+            borderRadius: "clamp(16px, 2.5vw, 32px)",
+            background: `linear-gradient(145deg, ${project.accent} 0%, ${project.accent}cc 100%)`,
+            position: "relative", overflow: "hidden",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            minHeight: "clamp(160px, 20vw, 280px)",
           }}>
-            {project.desc}
-          </p>
-          <div style={{
-            display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap",
-          }}>
-            <div style={{
-              border: `1px solid ${project.accent}66`,
-              borderRadius: "9999px", padding: "0.3rem 1rem",
-              background: `${project.accent}15`,
+            <span style={{
+              position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "clamp(4rem, 12vw, 10rem)", fontWeight: 900,
+              color: "rgba(255,255,255,0.06)", letterSpacing: "-0.02em",
+              whiteSpace: "nowrap", overflow: "hidden",
+              lineHeight: 1,
             }}>
-              <span style={{
-                color: project.accent, fontSize: "clamp(0.5rem, 0.75vw, 0.7rem)",
-                fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase",
+              {project.name}
+            </span>
+            <span style={{
+              fontSize: "clamp(1.2rem, 3vw, 3.5rem)", fontWeight: 900,
+              color: "rgba(255,255,255,0.85)", letterSpacing: "-0.01em",
+              textAlign: "center", lineHeight: 1.1, padding: "1rem",
+              position: "relative", zIndex: 1,
+            }}>
+              {project.name}
+            </span>
+            {/* Decorative rings */}
+            <div style={{
+              position: "absolute", width: "80%", height: "80%",
+              borderRadius: "50%", border: "1px solid rgba(255,255,255,0.08)",
+              top: "10%", left: "10%", pointerEvents: "none",
+            }} />
+            <div style={{
+              position: "absolute", width: "60%", height: "60%",
+              borderRadius: "50%", border: "1px solid rgba(255,255,255,0.05)",
+              top: "20%", left: "20%", pointerEvents: "none",
+            }} />
+          </div>
+
+          {/* Right — description card */}
+          <div className="w-full md:w-[55%]" style={{
+            borderRadius: "clamp(16px, 2.5vw, 32px)",
+            background: `linear-gradient(145deg, ${project.accent}08 0%, rgba(255,255,255,0.015) 100%)`,
+            border: `1px solid ${project.accent}15`,
+            padding: "clamp(1.25rem, 2vw, 2.5rem)",
+            display: "flex", flexDirection: "column",
+            justifyContent: "center", gap: "clamp(0.75rem, 1.2vw, 1.5rem)",
+          }}>
+            <p style={{
+              color: "#D7E2EA", fontWeight: 300, lineHeight: 1.7,
+              fontSize: "clamp(0.75rem, 1.15vw, 1.05rem)", opacity: 0.85,
+            }}>
+              {project.desc}
+            </p>
+            <div style={{
+              display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap",
+              marginTop: "auto", paddingTop: "clamp(0.5rem, 1vw, 1rem)",
+            }}>
+              <div style={{
+                border: `1px solid ${project.accent}66`,
+                borderRadius: "9999px", padding: "0.3rem 1rem",
+                background: `${project.accent}15`,
               }}>
-                Open Source
+                <span style={{
+                  color: project.accent, fontSize: "clamp(0.5rem, 0.75vw, 0.7rem)",
+                  fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase",
+                }}>
+                  Open Source
+                </span>
+              </div>
+              <span style={{
+                color: "rgba(215,226,234,0.3)", fontSize: "clamp(0.5rem, 0.7vw, 0.65rem)",
+                letterSpacing: "0.08em",
+              }}>
+                {project.link.replace("https://github.com/", "")}
               </span>
             </div>
-            <span style={{
-              color: "rgba(215,226,234,0.3)", fontSize: "clamp(0.5rem, 0.7vw, 0.65rem)",
-              letterSpacing: "0.08em",
-            }}>
-              {project.link.replace("https://github.com/", "")}
-            </span>
           </div>
         </div>
       </motion.div>
