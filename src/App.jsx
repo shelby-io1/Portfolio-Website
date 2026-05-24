@@ -730,19 +730,25 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
   const activeRangeStart = index / totalCards;
   const activeRangeEnd = (index + 1) / totalCards;
 
+  const isFirst = index === 0;
+
   const cardY = useTransform(
     scrollYProgress,
-    [0, activeRangeStart, activeRangeEnd, 1],
-    [0, 100, 0, 0]
+    isFirst
+      ? [0, 1]
+      : [0, activeRangeStart, activeRangeEnd, 1],
+    isFirst
+      ? [0, 0]
+      : [100, 100, 0, 0]
   );
 
   const scale = useTransform(
     scrollYProgress,
-    index === 0
-      ? [0, 1 / totalCards, 1]
+    isFirst
+      ? [0, 1]
       : [0, activeRangeStart, activeRangeEnd, 1],
-    index === 0
-      ? [1, 1, 1]
+    isFirst
+      ? [1, 1]
       : [0.92, 0.92, 1, 1]
   );
 
