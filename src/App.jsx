@@ -520,7 +520,7 @@ function AboutSection() {
     <section
       id="about"
       style={{ background: "#0C0C0C", position: "relative", scrollMarginTop: "100px" }}
-      className="flex flex-col items-center px-6 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
+      className="flex flex-col items-center px-4 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
     >
       {/* Decorative corner images */}
       {/* Top-left moon */}
@@ -627,7 +627,7 @@ function ServicesSection() {
         borderRadius: "40px 40px 0 0",
         scrollMarginTop: "100px",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20"
+      className="px-4 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20"
     >
       <FadeIn delay={0} y={40}>
         <h2
