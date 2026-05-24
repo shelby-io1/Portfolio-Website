@@ -129,7 +129,7 @@ function AnimatedText({ text, className = "" }) {
   let globalIndex = 0;
 
   return (
-    <p ref={ref} className={className} style={{ position: "relative", wordBreak: "keep-all", overflowWrap: "break-word" }}>
+    <p ref={ref} className={className} style={{ position: "relative", overflowWrap: "break-word", wordBreak: "break-word" }}>
       {flatChars.map((word, wi) => {
         const wordChars = word.chars.map((char) => {
           const i = globalIndex++;
@@ -520,7 +520,7 @@ function AboutSection() {
     <section
       id="about"
       style={{ background: "#0C0C0C", position: "relative", scrollMarginTop: "100px" }}
-      className="flex flex-col items-center px-10 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
+      className="flex flex-col items-center px-12 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
     >
       {/* Decorative 3D object */}
       <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[15px] sm:bottom-[20px] md:bottom-[25px] left-[25px] sm:left-[35px] md:left-[45px]">
