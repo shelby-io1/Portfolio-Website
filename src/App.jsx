@@ -520,7 +520,7 @@ function AboutSection() {
     <section
       id="about"
       style={{ background: "#0C0C0C", position: "relative", scrollMarginTop: "100px" }}
-      className="flex flex-col items-center px-8 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
+      className="flex flex-col items-center px-10 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
     >
       {/* Decorative 3D object */}
       <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[15px] sm:bottom-[20px] md:bottom-[25px] left-[25px] sm:left-[35px] md:left-[45px]">
@@ -1045,7 +1045,7 @@ function ContactSection() {
                 onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(182,0,168,0.6)"; e.currentTarget.style.background = "rgba(182,0,168,0.12)"; e.currentTarget.style.transform = "scale(1.1)"; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(215,226,234,0.2)"; e.currentTarget.style.background = "rgba(215,226,234,0.04)"; e.currentTarget.style.transform = "scale(1)"; }}
               >
-                <svg width="clamp(16, 4vw, 20)" height="clamp(16, 4vw, 20)" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                   <circle cx="12" cy="12" r="4"/>
                   <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
