@@ -905,7 +905,7 @@ function ProjectsSection() {
           className="hero-heading font-black uppercase text-center leading-none tracking-tight"
           style={{
             fontSize: "clamp(3rem, 12vw, 160px)",
-            marginBottom: "clamp(4rem, 8vw, 10rem)",
+            marginBottom: "clamp(2rem, 4vw, 4rem)",
           }}
         >
           Projects
