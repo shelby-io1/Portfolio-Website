@@ -545,7 +545,7 @@ function AboutSection() {
         <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
           <AnimatedText
             text="With over two years of experience as a UI/UX designer and full-stack developer, I specialize in crafting modern web experiences, mobile apps, and AI-driven solutions. I'm passionate about turning complex ideas into clean, intuitive interfaces that users love. Let's build something incredible together!"
-            className="font-medium text-center leading-relaxed max-w-[560px]"
+            className="font-medium text-center leading-relaxed max-w-[560px] max-sm:max-w-[260px]"
             style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}
           />
         </div>
