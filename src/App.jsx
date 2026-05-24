@@ -264,7 +264,7 @@ function HeroSection() {
   return (
     <section
       style={{ background: "#0C0C0C", overflowX: "clip", position: "relative" }}
-      className="hero-full flex flex-col"
+      className="hero-full flex flex-col max-lg:!h-[50dvh]"
     >
       <ShootingStars />
       {/* Navbar */}
@@ -444,7 +444,7 @@ function MarqueeSection() {
     <section
       ref={sectionRef}
       style={{ background: "#0C0C0C", overflowX: "hidden" }}
-      className="pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28"
+      className="pt-0 md:pt-28 pb-16 sm:pb-20 md:pb-28"
     >
       {/* Row 1 — moves right */}
       <motion.div
@@ -520,42 +520,14 @@ function AboutSection() {
     <section
       id="about"
       style={{ background: "#0C0C0C", position: "relative", scrollMarginTop: "100px" }}
-      className="flex flex-col items-center px-4 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
+      className="flex flex-col items-center px-8 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
     >
-      {/* Decorative corner images */}
-      {/* Top-left moon */}
-      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="hidden sm:block absolute top-[15px] sm:top-[20px] md:top-[25px] left-[15px] sm:left-[20px] md:left-[25px]">
-        <img
-          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png"
-          alt=""
-          className="w-[50px] sm:w-[70px] md:w-[90px]"
-        />
-      </FadeIn>
-
-      {/* Bottom-left 3D object */}
+      {/* Decorative 3D object */}
       <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[15px] sm:bottom-[20px] md:bottom-[25px] left-[25px] sm:left-[35px] md:left-[45px]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png"
           alt=""
-          className="w-[40px] sm:w-[55px] md:w-[70px]"
-        />
-      </FadeIn>
-
-      {/* Top-right lego */}
-      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="hidden sm:block absolute top-[15px] sm:top-[20px] md:top-[25px] right-[15px] sm:right-[20px] md:right-[25px]">
-        <img
-          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
-          alt=""
-          className="w-[50px] sm:w-[70px] md:w-[90px]"
-        />
-      </FadeIn>
-
-      {/* Bottom-right group */}
-      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[15px] sm:bottom-[20px] md:bottom-[25px] right-[25px] sm:right-[35px] md:right-[45px]">
-        <img
-          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png"
-          alt=""
-          className="w-[55px] sm:w-[75px] md:w-[95px]"
+          className="w-[140px] sm:w-[200px] md:w-[280px]"
         />
       </FadeIn>
 
@@ -627,7 +599,7 @@ function ServicesSection() {
         borderRadius: "40px 40px 0 0",
         scrollMarginTop: "100px",
       }}
-      className="px-4 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20"
+      className="px-8 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -638,7 +610,7 @@ function ServicesSection() {
         </h2>
       </FadeIn>
 
-      <div style={{ maxWidth: "64rem", margin: "0 auto" }}>
+      <div style={{ maxWidth: "64rem", margin: "0 auto" }} className="max-sm:!mx-4">
         {SERVICES.map((svc, i) => (
           <FadeIn key={svc.num} delay={i * 0.1} y={20}>
             <div
@@ -725,63 +697,23 @@ const PROJECTS = [
   },
 ];
 
-function ProjectCard({ project, index, totalCards, containerRef }) {
-  const cardRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const activeRangeStart = index / totalCards;
-  const activeRangeEnd = (index + 1) / totalCards;
-
-  const isFirst = index === 0;
-
-  const cardY = useTransform(
-    scrollYProgress,
-    isFirst
-      ? [0, 1]
-      : [0, activeRangeStart, activeRangeEnd, 1],
-    isFirst
-      ? [0, 0]
-      : [100, 100, 0, 0]
-  );
-
-  const scale = useTransform(
-    scrollYProgress,
-    isFirst
-      ? [0, 1]
-      : [0, activeRangeStart, activeRangeEnd, 1],
-    isFirst
-      ? [1, 1]
-      : [0.92, 0.92, 1, 1]
-  );
-
+function ProjectCard({ project }) {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "flex-start" }}>
-      <motion.div
-        ref={cardRef}
-        style={{
-          y: cardY,
-          scale,
-          position: "sticky",
-          top: 0,
-          width: "100%",
-          margin: "0 auto",
-          maxWidth: "calc(100% - 1rem)",
-          minHeight: "clamp(300px, 40vh, 480px)",
-          zIndex: index,
-          background: "#0C0C0C",
-          border: `2px solid ${project.accent}44`,
-          borderRadius: "clamp(24px, 5vw, 60px)",
-          willChange: "transform",
-          overflow: "hidden",
-          boxShadow: `0 0 60px ${project.accent}0a`,
-          cursor: "pointer",
-        }}
-        className="p-5 sm:p-7 md:p-10"
-        onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
-      >
+    <div style={{
+      width: "100%",
+      margin: "0 auto 2rem auto",
+      maxWidth: "calc(100% - 1rem)",
+      minHeight: "clamp(300px, 40vh, 480px)",
+      background: `linear-gradient(145deg, ${project.accent}08 0%, #0C0C0C 60%, #0C0C0C 100%)`,
+      border: `1px solid ${project.accent}33`,
+      borderRadius: "clamp(24px, 5vw, 60px)",
+      overflow: "hidden",
+      boxShadow: `0 0 60px ${project.accent}0a`,
+      cursor: "pointer",
+    }}
+      className="p-5 sm:p-7 md:p-10"
+      onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
+    >
         <div style={{
           position: "absolute", top: 0, left: 0, width: "40%", height: "50%",
           background: `radial-gradient(ellipse at 0% 0%, ${project.accent}22 0%, transparent 70%)`,
@@ -797,21 +729,21 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
             {project.num}
           </span>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <p style={{ color: "#D7E2EA", opacity: 0.45, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: "clamp(0.6rem, 1vw, 0.85rem)" }}>
+            <p style={{ color: "#D7E2EA", opacity: 0.45, textTransform: "uppercase", letterSpacing: "0.14em", fontSize: "clamp(0.7rem, 1vw, 0.85rem)" }}>
               {project.category}
             </p>
             <p className="font-black uppercase" style={{ color: "#D7E2EA", fontSize: "clamp(0.9rem, 2.2vw, 1.9rem)", lineHeight: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {project.name}
             </p>
           </div>
-          <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", paddingRight: "1.5rem" }}>
+          <div className="w-full sm:w-auto ml-3 sm:ml-0" style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", paddingRight: "0.75rem" }}>
             {project.tags.map(tag => (
               <span key={tag} style={{
                 border: `1px solid ${project.accent}66`,
                 color: project.accent,
                 borderRadius: "9999px",
-                padding: "0.2rem 0.7rem",
-                fontSize: "clamp(0.55rem, 0.9vw, 0.75rem)",
+                padding: "0.25rem 0.8rem",
+                fontSize: "clamp(0.6rem, 0.9vw, 0.75rem)",
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
@@ -901,18 +833,14 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
             </div>
           </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
   );
 }
 
 function ProjectsSection() {
-  const containerRef = useRef(null);
-
   return (
     <section
       id="projects"
-      ref={containerRef}
       style={{
         background: "#0C0C0C",
         zIndex: 10,
@@ -933,18 +861,9 @@ function ProjectsSection() {
         </h2>
       </FadeIn>
 
-      {/* Stacking cards */}
-      <div style={{ position: "relative" }}>
-        {PROJECTS.map((project, i) => (
-          <ProjectCard
-            key={project.num}
-            project={project}
-            index={i}
-            totalCards={PROJECTS.length}
-            containerRef={containerRef}
-          />
-        ))}
-      </div>
+      {PROJECTS.map((project) => (
+        <ProjectCard key={project.num} project={project} />
+      ))}
     </section>
   );
 }
