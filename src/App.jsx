@@ -622,7 +622,7 @@ function ServicesSection() {
         background: "transparent",
         borderRadius: "40px 40px 0 0",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 pb-28 sm:pb-40 md:pb-64"
+      className="px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 pb-32 sm:pb-48 md:pb-72"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -892,18 +892,21 @@ function ProjectsSection() {
     <section
       id="projects"
       ref={containerRef}
-      className="sm:rounded-t-[50px] md:rounded-t-[60px] border-t border-[rgba(182,0,168,0.08)] px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 mt-16 sm:mt-24 md:mt-32 pb-24 sm:pb-32 md:pb-48"
       style={{
         background: "#0C0C0C",
         zIndex: 10,
         position: "relative",
-        marginBottom: "clamp(4rem, 6vw, 8rem)",
+        scrollMarginTop: "100px",
       }}
+      className="px-6 sm:px-10 md:px-16 pt-24 sm:pt-36 md:pt-48 pb-24 sm:pb-32 md:pb-48"
     >
       <FadeIn delay={0} y={40}>
         <h2
           className="hero-heading font-black uppercase text-center leading-none tracking-tight"
-          style={{ fontSize: "clamp(3rem, 12vw, 160px)", marginBottom: "clamp(2rem, 5vw, 5rem)" }}
+          style={{
+            fontSize: "clamp(3rem, 12vw, 160px)",
+            marginBottom: "clamp(4rem, 8vw, 10rem)",
+          }}
         >
           Projects
         </h2>
