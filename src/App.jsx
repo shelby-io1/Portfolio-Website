@@ -1161,6 +1161,9 @@ export default function App() {
         <div style={{ width: "clamp(60px, 20vw, 120px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.4), rgba(118,33,176,0.4), transparent)" }} />
       </div>
       <ProjectsSection />
+      <div className="h-20 sm:h-24 md:h-40 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
+        <div style={{ width: "clamp(80px, 25vw, 160px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.5), rgba(118,33,176,0.5), transparent)" }} />
+      </div>
       <ContactSection />
     </div>
   );
