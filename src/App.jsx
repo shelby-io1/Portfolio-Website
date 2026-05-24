@@ -622,7 +622,7 @@ function ServicesSection() {
         background: "transparent",
         borderRadius: "40px 40px 0 0",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-24 md:pb-32"
+      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -898,7 +898,7 @@ function ProjectsSection() {
         position: "relative",
         scrollMarginTop: "100px",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-24 md:pt-36 pb-16 sm:pb-24 md:pb-36"
+      className="px-6 sm:px-10 md:px-16 pt-8 sm:pt-12 md:pt-20 pb-8 sm:pb-12 md:pb-20"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -936,7 +936,7 @@ function ContactSection() {
     <section
       id="contact"
       style={{ background: "#0C0C0C", position: "relative", overflow: "hidden" }}
-      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-24 md:pt-40 pb-16 sm:pb-24 md:pb-36"
+      className="px-6 sm:px-10 md:px-16 pt-8 sm:pt-12 md:pt-24 pb-16 sm:pb-24 md:pb-36"
     >
       {/* Subtle glow blob */}
       <div style={{
@@ -1157,7 +1157,13 @@ export default function App() {
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
+      <div className="h-16 sm:h-20 md:h-32 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
+        <div style={{ width: "clamp(60px, 20vw, 120px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.4), rgba(118,33,176,0.4), transparent)" }} />
+      </div>
       <ProjectsSection />
+      <div className="h-16 sm:h-20 md:h-32 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
+        <div style={{ width: "clamp(80px, 25vw, 160px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.5), rgba(118,33,176,0.5), transparent)" }} />
+      </div>
       <ContactSection />
     </div>
   );
