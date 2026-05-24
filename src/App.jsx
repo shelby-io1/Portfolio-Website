@@ -438,7 +438,7 @@ function MarqueeSection() {
     <section
       ref={sectionRef}
       style={{ background: "#0C0C0C", overflowX: "hidden" }}
-      className="pt-8 sm:pt-16 md:pt-28 pb-14 sm:pb-20 md:pb-28"
+      className="pt-4 sm:pt-12 md:pt-28 pb-14 sm:pb-20 md:pb-28"
     >
       {/* Row 1 — moves right */}
       <div
@@ -905,7 +905,7 @@ function ProjectsSection() {
           className="hero-heading font-black uppercase text-center leading-none tracking-tight"
           style={{
             fontSize: "clamp(3rem, 12vw, 160px)",
-            marginBottom: "clamp(2rem, 4vw, 4rem)",
+            marginBottom: "clamp(1.25rem, 3vw, 3rem)",
           }}
         >
           Projects
