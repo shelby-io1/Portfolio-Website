@@ -727,27 +727,30 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
     offset: ["start start", "end end"],
   });
 
-  const scale = useTransform(
-    scrollYProgress,
-    [0, index / totalCards, (index + 1) / totalCards, 1],
-    [0.85, 0.85, 1, 1]
-  );
+  const activeRangeStart = index / totalCards;
+  const activeRangeEnd = (index + 1) / totalCards;
 
   const cardY = useTransform(
     scrollYProgress,
-    [0, index / totalCards, (index + 1) / totalCards, 1],
-    [80, 80, 0, 0]
+    [0, activeRangeStart, activeRangeEnd, 1],
+    [0, 100, 0, 0]
+  );
+
+  const scale = useTransform(
+    scrollYProgress,
+    [0, activeRangeStart, activeRangeEnd, 1],
+    index === 0 ? [1, 1, 1, 1] : [0.92, 0.92, 1, 1]
   );
 
   return (
-    <div style={{ minHeight: "clamp(500px, 85vh, 700px)", display: "flex", alignItems: "flex-start" }}>
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "flex-start" }}>
       <motion.div
         ref={cardRef}
         style={{
-          scale,
           y: cardY,
+          scale,
           position: "sticky",
-          top: "clamp(64px, 10vw, 96px)",
+          top: 0,
           width: "100%",
           zIndex: index,
           background: "#0C0C0C",
