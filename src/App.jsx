@@ -811,7 +811,7 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
         </div>
 
         {/* Body: color block + description */}
-        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-6" style={{ position: "relative", zIndex: 1, alignItems: "stretch", flex: 1, minHeight: "clamp(280px, 28vw, 380px)" }}>
+        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-6 p-1 sm:p-0" style={{ position: "relative", zIndex: 1, alignItems: "stretch", flex: 1, minHeight: "clamp(280px, 28vw, 380px)" }}>
           {/* Left — color identity block */}
           <div className="w-full md:w-[45%]" style={{
             borderRadius: "clamp(16px, 2.5vw, 32px)",
