@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 
 /* ─────────────────────────────────────────────────────────────
@@ -252,11 +252,14 @@ function ShootingStars() {
             animation: `twinkle ${2 + Math.random() * 3}s ${Math.random() * 5}s infinite`,
           }}
         />
-      ))}
-    </div>
+        ))}
+      </div>
   );
 }
 
+/* ─────────────────────────────────────────────────────────────
+   SECTION 1b: Hero Section
+   ───────────────────────────────────────────────────────────── */
 function HeroSection() {
   return (
     <section
@@ -273,7 +276,7 @@ function HeroSection() {
           background: "rgba(12,12,12,0.75)",
           border: "1px solid rgba(182,0,168,0.15)",
           boxShadow: "0 0 30px rgba(182,0,168,0.06), inset 0 1px 0 rgba(255,255,255,0.04)",
-        }} className="flex justify-between items-center px-6 sm:px-8 md:px-10 py-5 md:py-6">
+        }} className="flex justify-between items-center px-3 sm:px-8 md:px-10 py-3 md:py-6">
           <span style={{
             fontWeight: 800, fontSize: "clamp(0.95rem, 1.6vw, 1.3rem)",
             letterSpacing: "0.08em", textTransform: "uppercase",
@@ -284,7 +287,7 @@ function HeroSection() {
           }}>
             SZK
           </span>
-          <div style={{ display: "flex", gap: "clamp(0.25rem, 0.5vw, 0.5rem)" }}>
+          <div style={{ display: "flex", gap: "clamp(0.15rem, 0.3vw, 0.5rem)" }}>
             {[["About","about"],["Services","price"],["Projects","projects"],["Contact","contact"]].map(([label,id]) => (
               <a
                 key={label}
@@ -301,8 +304,8 @@ function HeroSection() {
                   textDecoration: "none",
                   transition: "all 0.25s ease",
                   cursor: "pointer",
-                  fontSize: "clamp(0.55rem, 0.75vw, 0.75rem)",
-                  padding: "clamp(0.5rem, 1vw, 0.7rem) clamp(0.8rem, 1.5vw, 1rem)",
+                  fontSize: "clamp(0.45rem, 0.65vw, 0.75rem)",
+                  padding: "clamp(0.35rem, 0.7vw, 0.7rem) clamp(0.5rem, 1vw, 1rem)",
                   borderRadius: "9999px",
                 }}
                 onMouseEnter={e => { e.currentTarget.style.color = "#D7E2EA"; e.currentTarget.style.background = "rgba(182,0,168,0.12)"; }}
@@ -381,7 +384,7 @@ function HeroSection() {
 
 /* ─────────────────────────────────────────────────────────────
    SECTION 2: Marquee (Scroll-driven profile cards)
-───────────────────────────────────────────────────────────── */
+   ───────────────────────────────────────────────────────────── */
 const MARQUEE_CARDS_ROW1 = [
   { label: "UI/UX Design", desc: "Wireframes · Prototypes · User Flow", accent: "#B600A8", icon: "○" },
   { label: "Web Dev", desc: "React · Next.js · Tailwind · Vite", accent: "#7621B0", icon: "◇" },
@@ -414,9 +417,9 @@ const MARQUEE_CARDS_ROW2 = [
 
 function MarqueeSection() {
   const sectionRef = useRef(null);
-  const row1Ref = useRef(null);
-  const row2Ref = useRef(null);
-  const [offset, setOffset] = useState(200);
+
+  const offsetMV = useMotionValue(200);
+  const smoothOffset = useSpring(offsetMV, { stiffness: 80, damping: 25, mass: 0.5 });
 
   const row1Cards = [...MARQUEE_CARDS_ROW1, ...MARQUEE_CARDS_ROW1, ...MARQUEE_CARDS_ROW1];
   const row2Cards = [...MARQUEE_CARDS_ROW2, ...MARQUEE_CARDS_ROW2, ...MARQUEE_CARDS_ROW2];
@@ -427,12 +430,15 @@ function MarqueeSection() {
       const rect = sectionRef.current.getBoundingClientRect();
       const sectionTop = window.scrollY + rect.top;
       const rawOffset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-      setOffset(rawOffset);
+      offsetMV.set(rawOffset);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [offsetMV]);
+
+  const row1X = useTransform(smoothOffset, (v) => v - 200);
+  const row2X = useTransform(smoothOffset, (v) => -(v - 200));
 
   return (
     <section
@@ -441,10 +447,9 @@ function MarqueeSection() {
       className="pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28"
     >
       {/* Row 1 — moves right */}
-      <div
-        ref={row1Ref}
+      <motion.div
         style={{
-          transform: `translateX(${offset - 200}px)`,
+          x: row1X,
           willChange: "transform",
           display: "flex",
           gap: "12px",
@@ -471,13 +476,12 @@ function MarqueeSection() {
             </p>
           </div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Row 2 — moves left */}
-      <div
-        ref={row2Ref}
+      <motion.div
         style={{
-          transform: `translateX(${-(offset - 200)}px)`,
+          x: row2X,
           willChange: "transform",
           display: "flex",
           gap: "12px",
@@ -503,7 +507,7 @@ function MarqueeSection() {
             </p>
           </div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -516,7 +520,7 @@ function AboutSection() {
     <section
       id="about"
       style={{ background: "#0C0C0C", position: "relative" }}
-      className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
+      className="flex flex-col items-center px-6 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
     >
       {/* Decorative corner images */}
       {/* Top-left moon */}
@@ -764,7 +768,7 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           width: "100%",
           margin: "0 auto",
           maxWidth: "calc(100% - 1rem)",
-          minHeight: "clamp(480px, 70vh, 640px)",
+          minHeight: "clamp(380px, 55vh, 600px)",
           zIndex: index,
           background: "#0C0C0C",
           border: `2px solid ${project.accent}44`,
@@ -1010,15 +1014,15 @@ function ContactSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "0.75rem",
+                gap: "clamp(0.4rem, 0.75vw, 0.75rem)",
                 border: "1px solid rgba(215,226,234,0.2)",
                 borderRadius: "9999px",
-                padding: "0.9rem 1.8rem",
+                padding: "clamp(0.6rem, 1.2vw, 0.9rem) clamp(1rem, 2.5vw, 1.8rem)",
                 color: "#D7E2EA",
                 textDecoration: "none",
                 fontFamily: "'Kanit', sans-serif",
                 fontWeight: 300,
-                fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)",
+                fontSize: "clamp(0.7rem, 1.2vw, 1.1rem)",
                 letterSpacing: "0.04em",
                 background: "rgba(215,226,234,0.04)",
                 transition: "border-color 0.2s, background 0.2s",
@@ -1040,15 +1044,15 @@ function ContactSection() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "0.75rem",
+                gap: "clamp(0.4rem, 0.75vw, 0.75rem)",
                 border: "1px solid rgba(215,226,234,0.2)",
                 borderRadius: "9999px",
-                padding: "0.9rem 1.8rem",
+                padding: "clamp(0.6rem, 1.2vw, 0.9rem) clamp(1rem, 2.5vw, 1.8rem)",
                 color: "#D7E2EA",
                 textDecoration: "none",
                 fontFamily: "'Kanit', sans-serif",
                 fontWeight: 300,
-                fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)",
+                fontSize: "clamp(0.7rem, 1.2vw, 1.1rem)",
                 letterSpacing: "0.04em",
                 background: "rgba(215,226,234,0.04)",
                 transition: "border-color 0.2s, background 0.2s",
@@ -1171,7 +1175,13 @@ export default function App() {
       <GlobalStyles />
       <HeroSection />
       <MarqueeSection />
+      <div className="h-24 sm:h-32 md:h-48 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
+        <div style={{ width: "clamp(80px, 25vw, 160px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.5), rgba(118,33,176,0.5), transparent)" }} />
+      </div>
       <AboutSection />
+      <div className="h-24 sm:h-32 md:h-48 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
+        <div style={{ width: "clamp(80px, 25vw, 160px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.5), rgba(118,33,176,0.5), transparent)" }} />
+      </div>
       <ServicesSection />
       <div className="h-16 sm:h-20 md:h-32 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
         <div style={{ width: "clamp(60px, 20vw, 120px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.4), rgba(118,33,176,0.4), transparent)" }} />
