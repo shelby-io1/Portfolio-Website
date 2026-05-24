@@ -438,7 +438,7 @@ function MarqueeSection() {
     <section
       ref={sectionRef}
       style={{ background: "#0C0C0C", overflowX: "hidden" }}
-      className="pt-4 sm:pt-12 md:pt-28 pb-14 sm:pb-20 md:pb-28"
+      className="pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28"
     >
       {/* Row 1 — moves right */}
       <div
@@ -516,7 +516,7 @@ function AboutSection() {
     <section
       id="about"
       style={{ background: "#0C0C0C", position: "relative" }}
-      className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-10 md:px-16 py-20 sm:py-28 md:py-40"
+      className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-10 md:px-16 pt-16 sm:pt-28 md:pt-40 pb-16 sm:pb-28 md:pb-40"
     >
       {/* Decorative corner images */}
       {/* Top-left moon */}
@@ -622,7 +622,7 @@ function ServicesSection() {
         background: "transparent",
         borderRadius: "40px 40px 0 0",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-14 sm:pt-20 md:pt-32 pb-32 sm:pb-48 md:pb-72"
+      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-20 md:pt-32 pb-16 sm:pb-24 md:pb-32"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -898,7 +898,7 @@ function ProjectsSection() {
         position: "relative",
         scrollMarginTop: "100px",
       }}
-      className="px-6 sm:px-10 md:px-16 pt-24 sm:pt-36 md:pt-48 pb-24 sm:pb-32 md:pb-48"
+      className="px-6 sm:px-10 md:px-16 pt-16 sm:pt-24 md:pt-36 pb-16 sm:pb-24 md:pb-36"
     >
       <FadeIn delay={0} y={40}>
         <h2
@@ -1157,13 +1157,7 @@ export default function App() {
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
-      <div className="h-16 sm:h-20 md:h-32 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
-        <div style={{ width: "clamp(60px, 20vw, 120px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.4), rgba(118,33,176,0.4), transparent)" }} />
-      </div>
       <ProjectsSection />
-      <div className="h-20 sm:h-24 md:h-40 flex items-center justify-center" style={{ background: "#0C0C0C" }}>
-        <div style={{ width: "clamp(80px, 25vw, 160px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.5), rgba(118,33,176,0.5), transparent)" }} />
-      </div>
       <ContactSection />
     </div>
   );
