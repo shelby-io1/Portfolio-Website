@@ -738,8 +738,12 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
 
   const scale = useTransform(
     scrollYProgress,
-    [0, activeRangeStart, activeRangeEnd, 1],
-    index === 0 ? [1, 1, 1, 1] : [0.92, 0.92, 1, 1]
+    index === 0
+      ? [0, 1 / totalCards, 1]
+      : [0, activeRangeStart, activeRangeEnd, 1],
+    index === 0
+      ? [1, 1, 1]
+      : [0.92, 0.92, 1, 1]
   );
 
   return (
@@ -751,8 +755,9 @@ function ProjectCard({ project, index, totalCards, containerRef }) {
           scale,
           position: "sticky",
           top: 0,
-          maxWidth: "calc(100vw - 2rem)",
+          width: "100%",
           margin: "0 auto",
+          maxWidth: "calc(100% - 1rem)",
           minHeight: "clamp(480px, 70vh, 640px)",
           zIndex: index,
           background: "#0C0C0C",
