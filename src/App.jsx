@@ -524,38 +524,38 @@ function AboutSection() {
     >
       {/* Decorative corner images */}
       {/* Top-left moon */}
-      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="hidden sm:block absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%]">
+      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="hidden sm:block absolute top-[15px] sm:top-[20px] md:top-[25px] left-[15px] sm:left-[20px] md:left-[25px]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png"
           alt=""
-          className="w-[120px] sm:w-[160px] md:w-[210px]"
+          className="w-[50px] sm:w-[70px] md:w-[90px]"
         />
       </FadeIn>
 
       {/* Bottom-left 3D object */}
-      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%]">
+      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[15px] sm:bottom-[20px] md:bottom-[25px] left-[25px] sm:left-[35px] md:left-[45px]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png"
           alt=""
-          className="w-[100px] sm:w-[140px] md:w-[180px]"
+          className="w-[40px] sm:w-[55px] md:w-[70px]"
         />
       </FadeIn>
 
       {/* Top-right lego */}
-      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="hidden sm:block absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%]">
+      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="hidden sm:block absolute top-[15px] sm:top-[20px] md:top-[25px] right-[15px] sm:right-[20px] md:right-[25px]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
           alt=""
-          className="w-[120px] sm:w-[160px] md:w-[210px]"
+          className="w-[50px] sm:w-[70px] md:w-[90px]"
         />
       </FadeIn>
 
       {/* Bottom-right group */}
-      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%]">
+      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="hidden sm:block absolute bottom-[15px] sm:bottom-[20px] md:bottom-[25px] right-[25px] sm:right-[35px] md:right-[45px]">
         <img
           src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png"
           alt=""
-          className="w-[130px] sm:w-[170px] md:w-[220px]"
+          className="w-[55px] sm:w-[75px] md:w-[95px]"
         />
       </FadeIn>
 
