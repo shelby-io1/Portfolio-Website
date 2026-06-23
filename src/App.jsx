@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { Analytics } from '@vercel/analytics/react';
 
 /* ─────────────────────────────────────────────────────────────
    GLOBAL STYLES (injected via <style>)
@@ -1111,6 +1112,7 @@ export default function App() {
         <div style={{ width: "clamp(80px, 25vw, 160px)", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, transparent, rgba(182,0,168,0.5), rgba(118,33,176,0.5), transparent)" }} />
       </div>
       <ContactSection />
+      <Analytics />
     </div>
   );
 }
